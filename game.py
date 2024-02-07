@@ -4,14 +4,14 @@ import random
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen_size = (800,800)
+        self.screen_size = (1000,1000)
         self.screen = pygame.display.set_mode(self.screen_size)
         self.clock = pygame.time.Clock()
+        pygame.display.set_caption('Game Of Life')
         self.running = True
         self.play = False
-        pygame.display.set_caption('Game Of Life')
-        self.tab = (int(self.screen_size[0] / 10),int(self.screen_size[1]/10))
-        self.sizecell = 10
+        self.sizecell = 5 #size in pixels
+        self.tab = (int(self.screen_size[0] / self.sizecell),int(self.screen_size[1]/self.sizecell))
         self.FPS = 120
 
         self.main()
@@ -99,8 +99,8 @@ class Game:
                         self.play = False
                         print("pause")
             if event.type == pygame.MOUSEBUTTONDOWN:
-                posX = int(pygame.mouse.get_pos()[0]/10)
-                posY = int(pygame.mouse.get_pos()[1]/10)
+                posX = int(pygame.mouse.get_pos()[0]/self.sizecell)
+                posY = int(pygame.mouse.get_pos()[1]/self.sizecell)
                 pos = (posX,posY)
                 print(pos)
                 self.addCell(posX,posY)
