@@ -11,15 +11,17 @@ class Game:
         self.running = True
         self.play = False
         self.sizecell = 5 #size in pixels
-        self.tab = (int(self.screen_size[0] / self.sizecell),int(self.screen_size[1]/self.sizecell))
         self.FPS = 120
 
+        self.init_tabs()
         self.main()
 
+    # Initialise all the tables and 
     def init_tabs(self):
-        self.tab_1 = [[0]*int(self.tab[0]) for i in range(int(self.tab[1]))]
-        self.tab_2 = [[0]*int(self.tab[0]) for i in range(int(self.tab[1]))]
-        self.tab_check = [[0]*int(self.tab[0]) for i in range(int(self.tab[1]))]
+        self.tab = (int(self.screen_size[0] / self.sizecell),int(self.screen_size[1]/self.sizecell)) #table template for all other tables
+        self.tab_1      = [[0]*self.tab[0] for i in range(self.tab[1])] #tab_1 is actual table draw
+        self.tab_2      = [[0]*self.tab[0] for i in range(self.tab[1])] #tab_2 is the futur generation
+        self.tab_check  = [[0]*self.tab[0] for i in range(self.tab[1])] #tab_check is use to calculate valor of life
 
     def printTable(self):
         for i in range(self.tab[0]):
@@ -119,5 +121,4 @@ class Game:
             self.clock.tick(self.FPS)
 
     def main(self):
-        self.init_tabs()
         self.loop()
