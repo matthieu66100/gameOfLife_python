@@ -41,7 +41,7 @@ class Game:
                 self.tab_1[i][j] = self.tab_2[i][j]
 
     def draw(self, x,y):
-        pixel = pygame.draw.rect(self.screen, (60,60,150),(x*self.sizecell, y*self.sizecell, self.sizecell, self.sizecell))
+        pygame.draw.rect(self.screen, (60,60,150),(x*self.sizecell, y*self.sizecell, self.sizecell, self.sizecell))
 
     def newGeneration(self):
         for i in range(self.tab[0]):
