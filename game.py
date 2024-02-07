@@ -1,5 +1,5 @@
 import pygame
-
+import random
 
 class Game:
     def __init__(self):
@@ -29,7 +29,12 @@ class Game:
 
     def addCell(self, x, y):
         self.tab_1[x][y] = 1
-    
+
+    def randGenerate(self):
+        for i in range(self.tab[0]):
+            for j in range(self.tab[1]):
+                self.tab_1[i][j] = random.randint(0,1)
+
     def tampTab(self):
         for i in range(self.tab[0]):
             for j in range(self.tab[1]):
@@ -83,6 +88,9 @@ class Game:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+                if event.key == pygame.K_r:
+                    self.randGenerate()
+                    print("random generation")
                 if event.key == pygame.K_SPACE:
                     if self.play == False:
                         self.play = True
