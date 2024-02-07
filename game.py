@@ -41,7 +41,7 @@ class Game:
                 self.tab_1[i][j] = self.tab_2[i][j]
 
     def draw(self, x,y):
-        pixel = pygame.draw.rect(self.screen, (0,0,125),(x*self.sizecell, y*self.sizecell, self.sizecell, self.sizecell))
+        pixel = pygame.draw.rect(self.screen, (60,60,150),(x*self.sizecell, y*self.sizecell, self.sizecell, self.sizecell))
 
     def newGeneration(self):
         for i in range(self.tab[0]):
@@ -101,13 +101,12 @@ class Game:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 posX = int(pygame.mouse.get_pos()[0]/self.sizecell)
                 posY = int(pygame.mouse.get_pos()[1]/self.sizecell)
-                pos = (posX,posY)
-                print(pos)
+                print(posX,posY)
                 self.addCell(posX,posY)
     
     def loop(self):
         while self.running:
-            self.screen.fill((120,120,120))
+            self.screen.fill((200,200,200))
             self.printTable()
     
             self.events()
